@@ -7,9 +7,9 @@ export class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image1: '',
-      image2: '',
-      image3: '',
+      image1: {},
+      image2: {},
+      image3: {},
     };
     /* const productDet = ApiService.getProductDetails({
       product_id: 1
@@ -22,7 +22,7 @@ export class HomeScreen extends React.Component {
 
   componentDidMount(){
     this.fetchProdutDetails({
-      product_id: 3
+      product_id: 1
     });
   }
 
@@ -39,7 +39,6 @@ export class HomeScreen extends React.Component {
     })
     .then((response)=> response.json())
     .then((responseData)=> {
-      console.log(responseData)
       this.setState({
         image1: responseData.data.product_images[0].image,
         image2: responseData.data.product_images[1].image
@@ -127,9 +126,9 @@ const styles = StyleSheet.create({
   },
   slide1: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#9DD6EB',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB',
   },
   slide2: {
     flex: 1,

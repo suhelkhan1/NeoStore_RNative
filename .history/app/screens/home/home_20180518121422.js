@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ApiService } from '../../api/ApiService';
@@ -7,43 +7,13 @@ export class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image1: '',
-      image2: '',
-      image3: '',
+      data: {}
     };
-    /* const productDet = ApiService.getProductDetails({
+    const productDet = ApiService.getProductDetails({
       product_id: 1
-    }).then((() => {
-      this.setState = ({
-        data: this.productDet.product_images
-      })
-    })); */
-  }
-
-  componentDidMount(){
-    this.fetchProdutDetails({
-      product_id: 3
     });
-  }
-
-  fetchProdutDetails(data) {
-    var url = 'http://staging.php-dev.in:8844/trainingapp/api/products/getDetail'
-    + '?product_id=' + data.product_id;
-
-    fetch(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        // 'access_token': `${token}`,
-      }
-    })
-    .then((response)=> response.json())
-    .then((responseData)=> {
-      console.log(responseData)
-      this.setState({
-        image1: responseData.data.product_images[0].image,
-        image2: responseData.data.product_images[1].image
-      });
+    this.setState = ({
+      data: this.productDet.product_images
     })
   }
   static navigationOptions = {
@@ -56,7 +26,7 @@ export class HomeScreen extends React.Component {
         <Swiper style={styles.wrapper} height={200} showsButtons={true} autoplay>
           <View style={styles.slide1}>
             {/* <Text style={styles.text}>Hello Swiper</Text> */}
-            <Image style={styles.image} source={this.state.image1} />
+            <Image style={styles.image} source={this.state[0].image} />
           </View>
           <View style={styles.slide2}>
             <Text style={styles.text}>Beautiful</Text>
@@ -127,9 +97,9 @@ const styles = StyleSheet.create({
   },
   slide1: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#9DD6EB',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB',
   },
   slide2: {
     flex: 1,

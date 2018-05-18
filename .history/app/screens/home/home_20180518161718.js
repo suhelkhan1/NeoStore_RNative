@@ -56,7 +56,7 @@ export class HomeScreen extends React.Component {
         <Swiper style={styles.wrapper} height={200} showsButtons={true} autoplay>
           <View style={styles.slide1}>
             {/* <Text style={styles.text}>Hello Swiper</Text> */}
-            <Image style={styles.image} source={this.state.image1} />
+            <Image style={styles.image} source={{uri: this.state.image1}} />
           </View>
           <View style={styles.slide2}>
             <Text style={styles.text}>Beautiful</Text>

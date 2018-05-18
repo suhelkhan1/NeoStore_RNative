@@ -22,7 +22,7 @@ export class HomeScreen extends React.Component {
 
   componentDidMount(){
     this.fetchProdutDetails({
-      product_id: 3
+      product_id: 1
     });
   }
 
@@ -41,8 +41,8 @@ export class HomeScreen extends React.Component {
     .then((responseData)=> {
       console.log(responseData)
       this.setState({
-        image1: responseData.data.product_images[0].image,
-        image2: responseData.data.product_images[1].image
+        image1: responseData.product_images[0].image,
+        image2: responseData.product_images[1].image
       });
     })
   }
@@ -56,7 +56,7 @@ export class HomeScreen extends React.Component {
         <Swiper style={styles.wrapper} height={200} showsButtons={true} autoplay>
           <View style={styles.slide1}>
             {/* <Text style={styles.text}>Hello Swiper</Text> */}
-            <Image style={styles.image} source={this.state.image1} />
+            <Image style={styles.image} source={{uri: this.state.image1}} />
           </View>
           <View style={styles.slide2}>
             <Text style={styles.text}>Beautiful</Text>
@@ -127,9 +127,9 @@ const styles = StyleSheet.create({
   },
   slide1: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#9DD6EB',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB',
   },
   slide2: {
     flex: 1,

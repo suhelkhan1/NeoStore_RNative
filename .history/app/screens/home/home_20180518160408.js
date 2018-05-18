@@ -7,7 +7,7 @@ export class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image1: '',
+      image1: 'http://www.tiptoncommunications.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png',
       image2: '',
       image3: '',
     };
@@ -22,7 +22,7 @@ export class HomeScreen extends React.Component {
 
   componentDidMount(){
     this.fetchProdutDetails({
-      product_id: 3
+      product_id: 1
     });
   }
 
@@ -56,7 +56,7 @@ export class HomeScreen extends React.Component {
         <Swiper style={styles.wrapper} height={200} showsButtons={true} autoplay>
           <View style={styles.slide1}>
             {/* <Text style={styles.text}>Hello Swiper</Text> */}
-            <Image style={styles.image} source={this.state.image1} />
+            <Image style={styles.image} source={{uri: this.state.image1}} />
           </View>
           <View style={styles.slide2}>
             <Text style={styles.text}>Beautiful</Text>
