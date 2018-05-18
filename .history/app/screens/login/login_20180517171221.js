@@ -25,7 +25,7 @@ export class LoginScreen extends React.Component {
           <Text style={styles.titleNeo} >NeoSTORE</Text>
         </View>
         <View style={styles.container2}>
-          {/* <Icon name="ios-person" color="#4F8EF7" /> */}
+          <Icon name="ios-person" color="#4F8EF7" />
           <TextInput
             style={styles.inputStyle}
             placeholder="Username"

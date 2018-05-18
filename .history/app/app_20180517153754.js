@@ -1,4 +1,3 @@
-import Expo from 'expo';
 import React from 'react';
 import { View, Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
@@ -11,7 +10,7 @@ const RootStack = createStackNavigator(
     Register: screens.RegisterScreen,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#e91c1a',

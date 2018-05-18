@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  Text, View, StyleSheet, ImageBackground, Dimensions, TextInput, TouchableOpacity, Alert
+  Text, View, StyleSheet, ImageBackground, Dimensions, TextInput, TouchableOpacity, Alert,
+  Icon
 } from 'react-native';
 import { SPLASH } from '../../assets/images/index';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 const {width, height} = Dimensions.get('window')
 
@@ -25,7 +25,7 @@ export class LoginScreen extends React.Component {
           <Text style={styles.titleNeo} >NeoSTORE</Text>
         </View>
         <View style={styles.container2}>
-          {/* <Icon name="ios-person" color="#4F8EF7" /> */}
+          {/* <Icon style={{padding: 10}} name="ios-search" size={20} color="#000"/> */}
           <TextInput
             style={styles.inputStyle}
             placeholder="Username"

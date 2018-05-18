@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ApiService } from '../../api/ApiService';
@@ -35,34 +35,34 @@ export class HomeScreen extends React.Component {
 
         {/* Category tabs */}
         <View style={styles.container1}>
-          <TouchableOpacity
+          <TouchableHighlight
               onPress={this._onPressButton}>
               <View style={styles.touchable}>
               <Text style={styles.touchableInput}>Tables</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableHighlight>
           <Text style={{width: 13}} ></Text>
-          <TouchableOpacity
+          <TouchableHighlight
               onPress={this._onPressButton}>
               <View style={styles.touchable}>
               <Text style={styles.touchableInput}>Sofas</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
         <View style={styles.container1}>
-          <TouchableOpacity
+          <TouchableHighlight
               onPress={this._onPressButton}>
               <View style={styles.touchable}>
               <Text style={styles.touchableInput}>Chairs</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableHighlight>
           <Text style={{width: 13}} ></Text>
-          <TouchableOpacity
+          <TouchableHighlight
               onPress={this._onPressButton}>
               <View style={styles.touchable}>
               <Text style={styles.touchableInput}>Cupboards</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
       </View>
     )

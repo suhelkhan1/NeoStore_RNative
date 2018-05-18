@@ -11,7 +11,7 @@ const RootStack = createStackNavigator(
     Register: screens.RegisterScreen,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#e91c1a',

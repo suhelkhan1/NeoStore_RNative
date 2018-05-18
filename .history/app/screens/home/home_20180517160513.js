@@ -1,26 +1,14 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableNativeFeedback } from 'react-native';
 import Swiper from 'react-native-swiper';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { ApiService } from '../../api/ApiService';
+
 export class HomeScreen extends React.Component {
-  constructor() {
-    super();
-    /* const products = require('../../api/ApiService')
-    products.getProductDetails({
-      product_id: 1
-    }); */
-    ApiService.getProductDetails({
-      product_id: 1
-    });
-  }
   static navigationOptions = {
     title: 'NeoSTORE',
   };
   render() {
     return (
       <View style={styles.container}>
-        {/* Image Slider */}
         <Swiper style={styles.wrapper} height={200} showsButtons={true} autoplay>
           <View style={styles.slide1}>
             <Text style={styles.text}>Hello Swiper</Text>
@@ -32,37 +20,37 @@ export class HomeScreen extends React.Component {
             <Text style={styles.text}>And simple</Text>
           </View>
         </Swiper>
-
-        {/* Category tabs */}
         <View style={styles.container1}>
-          <TouchableOpacity
-              onPress={this._onPressButton}>
-              <View style={styles.touchable}>
-              <Text style={styles.touchableInput}>Tables</Text>
+          <TouchableNativeFeedback
+              onPress={this._onPressButton}
+              background={TouchableNativeFeedback.SelectableBackground()}>
+            <View style={styles.touchable}>
+              <Text style={{margin: 30}}>Button</Text>
             </View>
-          </TouchableOpacity>
-          <Text style={{width: 13}} ></Text>
-          <TouchableOpacity
-              onPress={this._onPressButton}>
-              <View style={styles.touchable}>
-              <Text style={styles.touchableInput}>Sofas</Text>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback
+              onPress={this._onPressButton}
+              background={TouchableNativeFeedback.SelectableBackground()}>
+            <View style={styles.touchable}>
+              <Text style={{margin: 30}}>Button</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableNativeFeedback>
         </View>
         <View style={styles.container1}>
-          <TouchableOpacity
-              onPress={this._onPressButton}>
-              <View style={styles.touchable}>
-              <Text style={styles.touchableInput}>Chairs</Text>
+          <TouchableNativeFeedback
+              onPress={this._onPressButton}
+              background={TouchableNativeFeedback.SelectableBackground()}>
+            <View style={styles.touchable}>
+              <Text style={{margin: 30}}>Button</Text>
             </View>
-          </TouchableOpacity>
-          <Text style={{width: 13}} ></Text>
-          <TouchableOpacity
-              onPress={this._onPressButton}>
-              <View style={styles.touchable}>
-              <Text style={styles.touchableInput}>Cupboards</Text>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback
+              onPress={this._onPressButton}
+              background={TouchableNativeFeedback.SelectableBackground()}>
+            <View style={styles.touchable}>
+              <Text style={{margin: 30}}>Button</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableNativeFeedback>
         </View>
       </View>
     )
@@ -74,7 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container1: {
-    flex: 0.7,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
@@ -83,12 +71,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     backgroundColor: 'red',
-    // marginLeft: 15,
-  },
-  touchableInput: {
-    margin: 30,
-    fontSize: 18,
-    color: '#fff'
+    margin: 5
   },
   wrapper: {
   },
