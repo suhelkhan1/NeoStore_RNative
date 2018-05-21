@@ -11,6 +11,7 @@ const RootStack = createStackNavigator(
     Register: screens.RegisterScreen,
     Register: screens.RegisterScreen,
     ProductList: screens.ProductList,
+    ProductDetails: screens.ProductDetails,
   },
   {
     initialRouteName: 'Home',
@@ -22,6 +23,7 @@ const RootStack = createStackNavigator(
       headerTitleStyle: {
         fontWeight: 'bold',
       },
+      headerBackTitle: null,
     },
   }
 );

@@ -55,7 +55,6 @@ export class HomeScreen extends React.Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          {/* Image Slider */}
           <Swiper style={styles.wrapper} height={200} showsButtons={true} autoplay>
             <View style={styles.slide1}>
               <Image style={styles.image} source={this.state.slides.slide1} />
@@ -74,34 +73,31 @@ export class HomeScreen extends React.Component {
             </View>
           </Swiper>
 
-          {/* Category tabs */}
           <View style={styles.container1}>
             <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('ProductList', {category: 'Table'})}>
+                onPress={() => this.props.navigation.navigate('ProductList', {category: 1})}>
                 <View style={styles.touchable}>
                 <Text style={styles.touchableInput}>Tables</Text>
               </View>
             </TouchableOpacity>
             <Text style={{width: 13}} ></Text>
             <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('ProductList', {category: 'Sofas'})}>
+                onPress={() => this.props.navigation.navigate('ProductList', {category: 3})}>
                 <View style={styles.touchable}>
                 <Text style={styles.touchableInput}>Sofas</Text>
               </View>
             </TouchableOpacity>
-          {/* </View>
-          <View style={styles.container1}> */}
             <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('ProductList', {category: 'Chairs'})}>
+                onPress={() => this.props.navigation.navigate('ProductList', {category: 2})}>
                 <View style={styles.touchable}>
                 <Text style={styles.touchableInput}>Chairs</Text>
               </View>
             </TouchableOpacity>
             <Text style={{width: 13}} ></Text>
             <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('ProductList', {category: 'Cupboards'})}>
+                onPress={() => this.props.navigation.navigate('ProductList', {category: 4})}>
                 <View style={styles.touchable}>
-                <Text style={styles.touchableInput}>Cupboards</Text>
+                <Text style={styles.touchableInput}>Beds</Text>
               </View>
             </TouchableOpacity>
           </View>

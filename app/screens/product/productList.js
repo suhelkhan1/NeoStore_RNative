@@ -1,6 +1,9 @@
 import Expo from 'expo';
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, Dimensions, Easing } from 'react-native';
+import {
+  View, Text, StyleSheet, ScrollView, Image, Dimensions, ActivityIndicator,
+  TouchableOpacity
+ } from 'react-native';
 import StarRating from 'react-native-star-rating';
 
 const {width, height} = Dimensions.get('window')
@@ -10,16 +13,18 @@ export class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
+      list: [],
+      // showLoader: true
     }
   }
 
-  componentDidMount(){
+  /* componentDidMount(){
     this.fetchProdutList({
       id: 1
     });
-  }
+  } */
   fetchProdutList(data) {
+    // this.setState({showLoader: true});
     var url = 'http://staging.php-dev.in:8844/trainingapp/api/products/getList'
     + '?product_category_id=' + data.id;
 
@@ -36,37 +41,42 @@ export class ProductList extends React.Component {
       this.setState({
         list: responseData.data
       });
+      // this.setState({showLoader: false});
     }).catch(function(error) {
-    console.log('There has been a problem with your fetch operation: ' + error.message);
+    console.log('Product List: ' + error.message);
       // ADD THIS THROW error
+      // this.setState({showLoader: false});
       throw error;
     })
   }
   renderProducts() {
-    return this.state.list.map(((item) => {
+    return this.state.list.map(((prop, key) => {
       return (
-        <View style={styles.container}>
-          <Image style={styles.image} source={{uri: item.product_images}}/>
-          <View style={styles.wrapper} >
-            <Text style={styles.title}>{item.name}</Text>
-            <Text style={styles.desc}>{item.producer}</Text>
-            <View style={styles.container}>
-              <Text style={styles.price}>Rs. {item.cost}</Text>
-              <StarRating
-                disabled={false}
-                maxStars={5}
-                rating={item.rating}
-                emptyStar={'ios-star-outline'}
-                fullStar={'ios-star'}
-                halfStar={'ios-star-half'}
-                iconSet={'Ionicons'}
-                fullStarColor="#ffb700"
-                starSize={20}
-                containerStyle={{marginTop: 10, marginLeft: 20}}
-              />
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('ProductDetails', {id: prop.id})}
+          key={key}>
+          <View style={styles.container}>
+            <Image style={styles.image} source={{uri: prop.product_images}}/>
+            <View style={styles.wrapper} >
+              <Text style={styles.title}>{prop.name}</Text>
+              <Text style={styles.desc}>{prop.producer}</Text>
+              <View style={styles.container}>
+                <Text style={styles.price}>Rs. {prop.cost}</Text>
+                <StarRating
+                  disabled={false}
+                  maxStars={5}
+                  rating={prop.rating}
+                  emptyStar={'ios-star-outline'}
+                  fullStar={'ios-star'}
+                  halfStar={'ios-star-half'}
+                  iconSet={'Ionicons'}
+                  fullStarColor="#ffba00"
+                  starSize={20}
+                  containerStyle={{marginTop: 10, marginLeft: 20}} />
+              </View>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       )
     }))
   }
@@ -74,8 +84,12 @@ export class ProductList extends React.Component {
     title: 'Product List',
   };
   render() {
+    const { navigation } = this.props;
+    const category = navigation.getParam('category');
     return (
       <ScrollView>
+        {/* <ActivityIndicator animating={true} size="large" color="#e91c1a" style={styles.loader}/> */}
+        {this.fetchProdutList({id: category})}
         {this.renderProducts()}
       </ScrollView>
     );
@@ -86,7 +100,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    margin: 5
+    // justifyContent: 'flex-end',
+    margin: 5,
   },
   wrapper: {
     marginLeft: 5,
@@ -116,5 +131,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
    rating: {
+   },
+   loader: {
+    position: 'absolute',
+    width: width * 0.5,
+    height: height * 0.5
+   },
+   line: {
+    borderBottomColor: '#4f4f4f',
+    borderBottomWidth: 1
    }
 });

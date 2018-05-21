@@ -5,6 +5,7 @@
 
 # dependencies
 /node_modules
+.history
 
 # misc
 .env.local
